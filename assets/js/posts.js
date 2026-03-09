@@ -91,5 +91,8 @@ window.BLOG_POSTS = [
   "2008/11/arti-sebuah-mimpi.md",
   "2008/11/mari-melangkah.md",
   "2008/11/brainstormed.md",
-  "2008/11/mengembalikan-ritual.md"
+  "2008/11/mengembalikan-ritual.md",
+  "2008/12/budaya-diskusi-baca-tulis.md",
+  "2008/12/pengesahan-dan-kejanggalan-bhp.md",
+  "2008/12/sederhana-sekali.md"
 ];
