@@ -8,6 +8,29 @@
       .replace(/'/g, "&#39;");
   }
 
+  function applyBylinePatternStyle(html) {
+    var container = document.createElement("div");
+    container.innerHTML = String(html || "");
+
+    var paragraphs = container.querySelectorAll("p");
+    paragraphs.forEach(function (paragraph) {
+      var text = (paragraph.textContent || "").replace(/\s+/g, " ").trim();
+      var isByline = /^dengan hormat,\s*Bergas Bimo Br(?:an|n)arto\s*-\s*.+/i.test(text);
+
+      if (!isByline) {
+        return;
+      }
+
+      if (!/<br\s*\/?\s*>/i.test(paragraph.innerHTML)) {
+        paragraph.innerHTML = paragraph.innerHTML.replace(/dengan hormat,\s*/i, "dengan hormat,<br>");
+      }
+
+      paragraph.classList.add("article-byline");
+    });
+
+    return container.innerHTML;
+  }
+
   var perPage = 14;
   var excerptWordLimitWithImage = 50;
   var excerptWordLimitWithoutImage = 75;
@@ -66,6 +89,7 @@
             parsedBodyHtml,
             hasImage ? excerptWordLimitWithImage : excerptWordLimitWithoutImage
           );
+          excerptHtml = applyBylinePatternStyle(excerptHtml);
         }
       } catch (err) {
         excerptHtml = "";

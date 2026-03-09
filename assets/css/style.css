@@ -262,6 +262,15 @@ a:hover {
   font-size: 10pt;
 }
 
+.article-byline-sticky {
+  position: sticky;
+  top: calc(var(--site-header-height, 0px) + var(--article-title-sticky-height, 0px));
+  background: #fff;
+  z-index: 3;
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+}
+
 .article-nav {
   margin-top: 24px;
   display: flex;
@@ -299,6 +308,11 @@ a:hover {
   }
 
   .article-title-sticky {
+    position: static;
+    top: auto;
+  }
+
+  .article-byline-sticky {
     position: static;
     top: auto;
   }

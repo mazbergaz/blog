@@ -1,20 +1,31 @@
 (async function () {
   function updateArticleStickyOffset() {
     var header = document.querySelector(".main-header-sticky");
+    var title = document.getElementById("article-title");
     var root = document.documentElement;
     if (!header || !root) {
       return;
     }
     root.style.setProperty("--site-header-height", header.offsetHeight + "px");
+    root.style.setProperty("--article-title-sticky-height", (title ? title.offsetHeight : 0) + "px");
   }
 
-  function applyArticleBylineStyle(container) {
-    if (!container) {
-      return;
+  function extractArticleByline(container, bylineEl) {
+    if (!container || !bylineEl) {
+      return false;
     }
 
+    bylineEl.hidden = true;
+    bylineEl.innerHTML = "";
+
     var paragraphs = container.querySelectorAll("p");
+    var found = false;
+
     paragraphs.forEach(function (paragraph) {
+      if (found) {
+        return;
+      }
+
       var text = (paragraph.textContent || "").replace(/\s+/g, " ").trim();
       var isByline = /^dengan hormat,\s*Bergas Bimo Br(?:an|n)arto\s*-\s*.+/i.test(text);
 
@@ -26,8 +37,13 @@
         paragraph.innerHTML = paragraph.innerHTML.replace(/dengan hormat,\s*/i, "dengan hormat,<br>");
       }
 
-      paragraph.classList.add("article-byline");
+      bylineEl.innerHTML = paragraph.innerHTML;
+      bylineEl.hidden = false;
+      paragraph.remove();
+      found = true;
     });
+
+    return found;
   }
 
   var manifestPosts = await BlogUtils.loadPostsManifest();
@@ -47,6 +63,7 @@
 
   var postPath = BlogUtils.normalizeLogicalPostPath(BlogUtils.getQueryParam("post"));
   var titleEl = document.getElementById("article-title");
+  var bylineEl = document.getElementById("article-byline");
   var bodyEl = document.getElementById("article-body");
   var prevEl = document.getElementById("prev-link");
   var nextEl = document.getElementById("next-link");
@@ -75,7 +92,8 @@
     updateArticleStickyOffset();
     var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, postPath);
     bodyEl.innerHTML = BlogUtils.removeFirstHeadingFromHtml(parsedHtml);
-    applyArticleBylineStyle(bodyEl);
+    extractArticleByline(bodyEl, bylineEl);
+    updateArticleStickyOffset();
   } catch (err) {
     titleEl.textContent = fallbackTitle;
     document.title = fallbackTitle + " - " + siteMeta.title;
