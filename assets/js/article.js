@@ -1,4 +1,13 @@
 (async function () {
+  function updateArticleStickyOffset() {
+    var header = document.querySelector(".main-header-sticky");
+    var root = document.documentElement;
+    if (!header || !root) {
+      return;
+    }
+    root.style.setProperty("--site-header-height", header.offsetHeight + "px");
+  }
+
   function applyArticleBylineStyle(container) {
     if (!container) {
       return;
@@ -31,6 +40,8 @@
   siteTitleEl.textContent = siteMeta.title;
   siteDescriptionEl.innerHTML = siteMeta.descriptionHtml;
   document.title = siteMeta.title;
+  updateArticleStickyOffset();
+  window.addEventListener("resize", updateArticleStickyOffset);
 
   BlogUtils.renderArchiveNav(navContainer, allPosts);
 
@@ -61,6 +72,7 @@
     var heading = BlogUtils.getFirstHeading(markdown);
     titleEl.textContent = heading || fallbackTitle;
     document.title = (heading || fallbackTitle) + " - " + siteMeta.title;
+    updateArticleStickyOffset();
     var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, postPath);
     bodyEl.innerHTML = BlogUtils.removeFirstHeadingFromHtml(parsedHtml);
     applyArticleBylineStyle(bodyEl);

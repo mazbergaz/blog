@@ -77,6 +77,15 @@ a:hover {
   font-size: 28px;
 }
 
+.article-title-sticky {
+  position: sticky;
+  top: var(--site-header-height, 0px);
+  background: #fff;
+  z-index: 4;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 .content-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -285,6 +294,11 @@ a:hover {
   }
 
   .main-header-sticky {
+    position: static;
+    top: auto;
+  }
+
+  .article-title-sticky {
     position: static;
     top: auto;
   }
