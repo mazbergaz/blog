@@ -78,6 +78,13 @@ a:hover {
   font-size: 18px;
 }
 
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 10px;
+}
+
 .card-excerpt {
   font-size: 12pt;
 }

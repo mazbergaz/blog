@@ -37,6 +37,7 @@
       var info = BlogUtils.parsePostPath(path);
       var title = BlogUtils.slugToTitle(info.slug);
       var excerptHtml = "";
+      var cardImageHtml = "";
       var articleHref = "article.html?post=" + encodeURIComponent(path);
 
       try {
@@ -48,16 +49,27 @@
             title = heading;
           }
           var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, path);
-          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedHtml, 100);
+          var parsedContainer = document.createElement("div");
+          parsedContainer.innerHTML = parsedHtml;
+          var firstImage = parsedContainer.querySelector("img");
+          var hasImage = Boolean(firstImage);
+
+          if (hasImage) {
+            cardImageHtml = '<img class="card-image" src="' + escapeHtml(firstImage.getAttribute("src") || "") + '" alt="' + escapeHtml(firstImage.getAttribute("alt") || "") + '">';
+          }
+
+          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedHtml, hasImage ? 50 : 100);
         }
       } catch (err) {
         excerptHtml = "";
+        cardImageHtml = "";
       }
 
       var preview = excerptHtml || "<p>No preview available.</p>";
       return (
         '<article class="card card-clickable" data-href="' + articleHref + '" role="link" tabindex="0" aria-label="Read article: ' + escapeHtml(title) + '">' +
           "<h2>" + escapeHtml(title) + "</h2>" +
+          cardImageHtml +
           '<div class="card-excerpt">' + preview + "</div>" +
           '<a class="read-more" href="' + articleHref + '">...continue reading</a>' +
         "</article>"
