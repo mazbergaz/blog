@@ -113,5 +113,10 @@ window.BLOG_POSTS = [
   "2009/07/sensi.md",
   "2009/07/sekilas-tentang-kreativitas.md",
   "2009/07/gonta-ganti-tampilan.md",
-  "2009/08/berkelana-bersama-udara.md"
+  "2009/08/berkelana-bersama-udara.md",
+  "2009/09/gempa-tasik.md",
+  "2009/09/antara-saya-kamu-dia-dan-beliau.md",
+  "2009/09/constructive-ego.md",
+  "2009/09/kemaren.md",
+  "2009/09/biar-tidur.md"
 ];
