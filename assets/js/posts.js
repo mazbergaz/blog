@@ -124,5 +124,10 @@ window.BLOG_POSTS = [
   "2009/10/vitamin-c-dosis-tinggi.md",
   "2009/11/fenomena-awal-bulan.md",
   "2009/12/jalan-raya-jakarta-raya.md",
-  "2010/01/sindrom-akhir-semester.md"
+  "2010/01/sindrom-akhir-semester.md",
+  "2010/02/siklus-energi-dan-entropi.md",
+  "2010/02/dunia-dan-irisannya.md",
+  "2010/03/wind-flow-simulation.md",
+  "2010/04/berpikirlah-selangkah-ke-depan.md",
+  "2010/04/berikan-emosimu.md"
 ];
