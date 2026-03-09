@@ -118,5 +118,10 @@ window.BLOG_POSTS = [
   "2009/09/antara-saya-kamu-dia-dan-beliau.md",
   "2009/09/constructive-ego.md",
   "2009/09/kemaren.md",
-  "2009/09/biar-tidur.md"
+  "2009/09/biar-tidur.md",
+  "2009/10/coretan-dan-dongeng.md",
+  "2009/10/lattice-gas-cellular-automata.md",
+  "2009/10/vitamin-c-dosis-tinggi.md",
+  "2009/11/fenomena-awal-bulan.md",
+  "2009/12/jalan-raya-jakarta-raya.md"
 ];
