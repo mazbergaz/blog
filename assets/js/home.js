@@ -49,8 +49,9 @@
             title = heading;
           }
           var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, path);
+          var parsedBodyHtml = BlogUtils.removeFirstHeadingFromHtml(parsedHtml);
           var parsedContainer = document.createElement("div");
-          parsedContainer.innerHTML = parsedHtml;
+          parsedContainer.innerHTML = parsedBodyHtml;
           var firstImage = parsedContainer.querySelector("img");
           var hasImage = Boolean(firstImage);
 
@@ -58,7 +59,7 @@
             cardImageHtml = '<img class="card-image" src="' + escapeHtml(firstImage.getAttribute("src") || "") + '" alt="' + escapeHtml(firstImage.getAttribute("alt") || "") + '">';
           }
 
-          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedHtml, hasImage ? 50 : 100);
+          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedBodyHtml, hasImage ? 50 : 100);
         }
       } catch (err) {
         excerptHtml = "";

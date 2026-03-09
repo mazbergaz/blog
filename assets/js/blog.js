@@ -67,6 +67,18 @@
     return container.innerHTML;
   }
 
+  function removeFirstHeadingFromHtml(html) {
+    var container = document.createElement("div");
+    container.innerHTML = String(html || "");
+
+    var firstHeading = container.querySelector("h1, h2, h3, h4, h5, h6");
+    if (firstHeading) {
+      firstHeading.remove();
+    }
+
+    return container.innerHTML;
+  }
+
   function parseMarkdownToHtml(markdown, logicalPostPath) {
     var html;
     if (window.marked && typeof window.marked.parse === "function") {
@@ -369,6 +381,7 @@
     parseMarkdownToHtml: parseMarkdownToHtml,
     getExcerptFromHtml: getExcerptFromHtml,
     getExcerptHtmlByWords: getExcerptHtmlByWords,
+    removeFirstHeadingFromHtml: removeFirstHeadingFromHtml,
     normalizeLogicalPostPath: normalizeLogicalPostPath,
     resolvePostPath: resolvePostPath,
     parsePostPath: parsePostPath,
