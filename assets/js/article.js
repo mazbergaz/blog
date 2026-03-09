@@ -38,7 +38,7 @@
     var heading = BlogUtils.getFirstHeading(markdown);
     titleEl.textContent = heading || fallbackTitle;
     document.title = (heading || fallbackTitle) + " - " + siteMeta.title;
-    bodyEl.innerHTML = BlogUtils.parseMarkdownToHtml(markdown);
+    bodyEl.innerHTML = BlogUtils.parseMarkdownToHtml(markdown, postPath);
   } catch (err) {
     titleEl.textContent = fallbackTitle;
     document.title = fallbackTitle + " - " + siteMeta.title;

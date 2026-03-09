@@ -47,7 +47,7 @@
           if (heading) {
             title = heading;
           }
-          var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown);
+          var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, path);
           excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedHtml, 100);
         }
       } catch (err) {
