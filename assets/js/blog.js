@@ -153,6 +153,10 @@
         return null;
       }
 
+      if (tagName === "br") {
+        return document.createElement("br");
+      }
+
       var clone = node.cloneNode(false);
       var childNodes = Array.prototype.slice.call(node.childNodes);
 
