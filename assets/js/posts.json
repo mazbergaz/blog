@@ -1,4 +1,4 @@
-window.BLOG_POSTS = [
+[
   "2006/07/kekacauan-alam-pikiran.md",
   "2006/07/kenapa-ada-kenapa.md",
   "2006/08/idealisme.md",
@@ -58,4 +58,4 @@ window.BLOG_POSTS = [
   "2008/09/mari-bertanya-sesat-dimana.md",
   "2008/09/september-not-the-rite-time-to-die.md",
   "2008/09/take-it-simple.md"
-];
+]

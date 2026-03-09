@@ -1,5 +1,6 @@
 (async function () {
-  var allPosts = BlogUtils.sortPostsLatest(window.BLOG_POSTS || []);
+  var manifestPosts = await BlogUtils.loadPostsManifest();
+  var allPosts = BlogUtils.sortPostsLatest(manifestPosts);
   var navContainer = document.getElementById("archive-nav");
   var siteTitleEl = document.getElementById("site-title");
   var siteDescriptionEl = document.getElementById("site-description");

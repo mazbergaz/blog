@@ -1,5 +1,6 @@
 (function () {
   var SITE_META_FILE = "content/blog.md";
+  var POSTS_JSON_FILE = "assets/js/posts.json";
 
   function normalizeLogicalPostPath(path) {
     return String(path || "")
@@ -318,6 +319,28 @@
     }
   }
 
+  async function loadPostsManifest() {
+    try {
+      var response = await fetch(POSTS_JSON_FILE);
+      if (!response.ok) {
+        throw new Error("posts.json not found");
+      }
+
+      var payload = await response.json();
+      if (!Array.isArray(payload)) {
+        throw new Error("Invalid posts.json format");
+      }
+
+      return payload
+        .map(normalizeLogicalPostPath)
+        .filter(function (item) {
+          return /^\d{4}\/\d{2}\/.+\.md$/i.test(item);
+        });
+    } catch (err) {
+      return (window.BLOG_POSTS || []).map(normalizeLogicalPostPath);
+    }
+  }
+
   function groupPostsByYearMonth(paths) {
     var grouped = {};
     for (var i = 0; i < paths.length; i += 1) {
@@ -377,6 +400,7 @@
   }
 
   window.BlogUtils = {
+    loadPostsManifest: loadPostsManifest,
     loadSiteMeta: loadSiteMeta,
     parseMarkdownToHtml: parseMarkdownToHtml,
     getExcerptFromHtml: getExcerptFromHtml,

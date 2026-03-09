@@ -9,7 +9,8 @@
   }
 
   var perPage = 14;
-  var allPosts = BlogUtils.sortPostsLatest(window.BLOG_POSTS || []);
+  var manifestPosts = await BlogUtils.loadPostsManifest();
+  var allPosts = BlogUtils.sortPostsLatest(manifestPosts);
   var totalPages = Math.max(1, Math.ceil(allPosts.length / perPage));
   var pageParam = Number(BlogUtils.getQueryParam("page") || "1");
   var currentPage = Number.isFinite(pageParam) ? Math.min(Math.max(pageParam, 1), totalPages) : 1;
