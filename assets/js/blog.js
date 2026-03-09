@@ -387,7 +387,7 @@
 
       for (var m = 0; m < months.length; m += 1) {
         var month = months[m];
-        var monthOpen = year === latestYear && m === 0 ? " open" : "";
+        var monthOpen = "";
         html.push("<details class=\"archive-month-toggle\"" + monthOpen + ">");
         html.push("<summary><h4>" + month + "</h4></summary>");
         html.push("<ul>");
@@ -405,6 +405,41 @@
     }
 
     container.innerHTML = html.join("\n");
+
+    var archiveRoot = container.closest(".archive-sticky") || container;
+    var targetHeight = Math.floor(window.innerHeight * 0.8);
+    var yearDetails = Array.prototype.slice.call(
+      container.querySelectorAll(".archive-year-toggle")
+    );
+
+    yearDetails.forEach(function (yearDetail, yearIndex) {
+      yearDetail.open = yearIndex === 0;
+      var monthDetails = yearDetail.querySelectorAll(".archive-month-toggle");
+      monthDetails.forEach(function (monthDetail) {
+        monthDetail.open = false;
+      });
+    });
+
+    if (archiveRoot.scrollHeight >= targetHeight) {
+      return;
+    }
+
+    for (var yIndex = 0; yIndex < yearDetails.length; yIndex += 1) {
+      var yearDetail = yearDetails[yIndex];
+      yearDetail.open = true;
+
+      var monthDetails = Array.prototype.slice.call(
+        yearDetail.querySelectorAll(".archive-month-toggle")
+      );
+
+      for (var mIndex = 0; mIndex < monthDetails.length; mIndex += 1) {
+        monthDetails[mIndex].open = true;
+
+        if (archiveRoot.scrollHeight >= targetHeight) {
+          return;
+        }
+      }
+    }
   }
 
   window.BlogUtils = {
