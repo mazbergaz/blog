@@ -345,7 +345,7 @@
           return /^\d{4}\/\d{2}\/.+\.md$/i.test(item);
         });
     } catch (err) {
-      return (window.BLOG_POSTS || []).map(normalizeLogicalPostPath);
+      return [];
     }
   }
 

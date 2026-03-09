@@ -27,7 +27,7 @@ Path convention:
 - Keep filename and path stability whenever possible (avoid breaking links).
 - Use relative paths for assets.
 - If link/path changes are unavoidable, update all internal references.
-- Every new post/content file must also be synced into `assets/js/posts.js` so it appears in homepage/archive/article navigation.
+- Every new post/content file must also be synced into `assets/js/posts.json` so it appears in homepage/archive/article navigation.
 - Blog title and description must be maintained in `content/blog.md` (single source used by homepage and article page).
 
 ## GitHub Pages Delivery Strategy (Minimal)

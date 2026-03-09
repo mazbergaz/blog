@@ -18,10 +18,6 @@ if [ -f assets/js/posts.json ]; then
   grep -Eo '"[0-9]{4}/[0-9]{2}/[^"/]+\.md"' assets/js/posts.json \
     | sed 's/^"//; s/"$//' \
     | LC_ALL=C sed '/^$/d' > "$EXISTING"
-elif [ -f assets/js/posts.js ]; then
-  grep -Eo '"[0-9]{4}/[0-9]{2}/[^"/]+\.md"' assets/js/posts.js \
-    | sed 's/^"//; s/"$//' \
-    | LC_ALL=C sed '/^$/d' > "$EXISTING"
 else
   : > "$EXISTING"
 fi
@@ -53,17 +49,6 @@ END {
   print "]"
 }' "$FINAL" > assets/js/posts.json
 
-awk 'BEGIN { print "window.BLOG_POSTS = [" }
-{
-  printf "%s  \"%s\"", (NR == 1 ? "" : ",\n"), $0
-}
-END {
-  if (NR > 0) {
-    printf "\n"
-  }
-  print "];"
-}' "$FINAL" > assets/js/posts.js
-
 LAST_SYNCED="$(tail -n 1 "$FINAL" 2>/dev/null || true)"
 
 if [ -n "$LAST_SYNCED" ]; then
@@ -78,4 +63,3 @@ rm -f "$DISCOVERED" "$EXISTING" "$FINAL"
 
 echo "Generated files:"
 echo "- assets/js/posts.json"
-echo "- assets/js/posts.js"
