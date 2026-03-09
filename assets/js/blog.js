@@ -412,33 +412,34 @@
       container.querySelectorAll(".archive-year-toggle")
     );
 
-    yearDetails.forEach(function (yearDetail, yearIndex) {
-      yearDetail.open = yearIndex === 0;
+    yearDetails.forEach(function (yearDetail) {
+      yearDetail.open = false;
       var monthDetails = yearDetail.querySelectorAll(".archive-month-toggle");
       monthDetails.forEach(function (monthDetail) {
         monthDetail.open = false;
       });
     });
 
+    if (!yearDetails.length) {
+      return;
+    }
+
+    var latestYearDetail = yearDetails[0];
+    latestYearDetail.open = true;
+
+    var latestYearMonths = Array.prototype.slice.call(
+      latestYearDetail.querySelectorAll(".archive-month-toggle")
+    );
+    latestYearMonths.forEach(function (monthDetail) {
+      monthDetail.open = true;
+    });
+
     if (archiveRoot.scrollHeight >= targetHeight) {
       return;
     }
 
-    for (var yIndex = 0; yIndex < yearDetails.length; yIndex += 1) {
-      var yearDetail = yearDetails[yIndex];
-      yearDetail.open = true;
-
-      var monthDetails = Array.prototype.slice.call(
-        yearDetail.querySelectorAll(".archive-month-toggle")
-      );
-
-      for (var mIndex = 0; mIndex < monthDetails.length; mIndex += 1) {
-        monthDetails[mIndex].open = true;
-
-        if (archiveRoot.scrollHeight >= targetHeight) {
-          return;
-        }
-      }
+    if (yearDetails.length > 1) {
+      yearDetails[1].open = true;
     }
   }
 
