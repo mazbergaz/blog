@@ -7,7 +7,7 @@
 
   var siteMeta = await BlogUtils.loadSiteMeta();
   siteTitleEl.textContent = siteMeta.title;
-  siteDescriptionEl.textContent = siteMeta.description;
+  siteDescriptionEl.innerHTML = siteMeta.descriptionHtml;
   document.title = siteMeta.title;
 
   BlogUtils.renderArchiveNav(navContainer, allPosts);

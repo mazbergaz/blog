@@ -287,9 +287,10 @@
   }
 
   function parseSiteMetaFromMarkdown(markdown) {
-    var lines = String(markdown || "").replace(/\r/g, "").split("\n");
+    var normalizedMarkdown = String(markdown || "").replace(/\r/g, "");
+    var lines = normalizedMarkdown.split("\n");
     var title = "hitherto";
-    var description = "journal of the hourney so far";
+    var headingLineIndex = -1;
 
     for (var i = 0; i < lines.length; i += 1) {
       var line = lines[i].trim();
@@ -299,16 +300,18 @@
 
       if (/^#\s+/.test(line)) {
         title = line.replace(/^#\s+/, "").trim() || title;
-        continue;
+        headingLineIndex = i;
+        break;
       }
-
-      if (!description || description === "journal of the hourney so far") {
-        description = line;
-      }
-      break;
     }
 
-    return { title: title, description: description };
+    var bodyLines = headingLineIndex >= 0 ? lines.slice(headingLineIndex + 1) : lines.slice();
+    var bodyMarkdown = bodyLines.join("\n").trim();
+    var descriptionHtml = bodyMarkdown
+      ? parseMarkdownToHtml(bodyMarkdown, "blog.md")
+      : "<p>journal of the journey so far.</p>";
+
+    return { title: title, descriptionHtml: descriptionHtml };
   }
 
   async function loadSiteMeta() {
@@ -320,7 +323,7 @@
       var markdown = await response.text();
       return parseSiteMetaFromMarkdown(markdown);
     } catch (err) {
-      return { title: "hitherto", description: "journal of the hourney so far" };
+      return { title: "hitherto", descriptionHtml: "<p>journal of the journey so far.</p>" };
     }
   }
 
