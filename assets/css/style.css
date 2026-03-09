@@ -95,9 +95,17 @@ a:hover {
 
 .card-image {
   width: 100%;
+  max-width: 320px;
   height: auto;
   display: block;
   margin: 0 0 10px;
+}
+
+.article-content img,
+.card-excerpt img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
 }
 
 .card-excerpt {
