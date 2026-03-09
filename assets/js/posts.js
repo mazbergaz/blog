@@ -84,5 +84,12 @@ window.BLOG_POSTS = [
   "2008/10/cukup-tau-aja.md",
   "2008/10/mengerikan.md",
   "2008/10/teguk-demi-teguk.md",
-  "2008/10/sumpah-pemuda.md"
+  "2008/10/sumpah-pemuda.md",
+  "2008/11/orbit-elektron-pada-atom.md",
+  "2008/11/tuntutan.md",
+  "2008/11/the-agent-of-change.md",
+  "2008/11/arti-sebuah-mimpi.md",
+  "2008/11/mari-melangkah.md",
+  "2008/11/brainstormed.md",
+  "2008/11/mengembalikan-ritual.md"
 ];

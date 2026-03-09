@@ -64,6 +64,18 @@ END {
   print "];"
 }' "$FINAL" > assets/js/posts.js
 
+LAST_SYNCED="$(tail -n 1 "$FINAL" 2>/dev/null || true)"
+
+if [ -n "$LAST_SYNCED" ]; then
+  echo "Last synced post entry:"
+  echo "- $LAST_SYNCED"
+else
+  echo "Last synced post entry:"
+  echo "- (none)"
+fi
+
 rm -f "$DISCOVERED" "$EXISTING" "$FINAL"
 
-echo "Synced assets/js/posts.json and assets/js/posts.js"
+echo "Generated files:"
+echo "- assets/js/posts.json"
+echo "- assets/js/posts.js"
