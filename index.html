@@ -1,9 +1,35 @@
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mazbergaz blog</title>
+    <title>hitherto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>mazbergaz blog</h1>
-    <p>This is a simple HTML page.</p>
+    <div class="layout">
+        <aside class="left-column"></aside>
+
+        <main class="main-column">
+            <h1 id="site-title" class="site-title">hitherto</h1>
+            <p id="site-description" class="site-description">journal of the hourney so far</p>
+            <section id="post-list" class="content-grid"></section>
+            <nav class="pagination" aria-label="Pagination">
+                <button id="page-prev" type="button">Previous</button>
+                <span id="page-info"></span>
+                <button id="page-next" type="button">Next</button>
+            </nav>
+        </main>
+
+        <aside class="right-column">
+            <h2>Archive</h2>
+            <div id="archive-nav"></div>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="assets/js/posts.js"></script>
+    <script src="assets/js/blog.js"></script>
+    <script src="assets/js/home.js"></script>
 </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hitherto</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="left-column"></aside>
+
+    <main class="main-column">
+      <h1 id="site-title" class="site-title">hitherto</h1>
+      <p id="site-description" class="site-description">journal of the hourney so far</p>
+      <p><a href="index.html">← Back to homepage</a></p>
+      <h2 id="article-title" class="article-title"></h2>
+      <article id="article-body" class="article-content"></article>
+
+      <nav class="article-nav" aria-label="Article navigation">
+        <a id="prev-link" class="arrow-link" href="#">← Previous</a>
+        <a id="next-link" class="arrow-link" href="#">Next →</a>
+      </nav>
+    </main>
+
+    <aside class="right-column">
+      <h2>Archive</h2>
+      <div id="archive-nav"></div>
+    </aside>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="assets/js/posts.js"></script>
+  <script src="assets/js/blog.js"></script>
+  <script src="assets/js/article.js"></script>
+</body>
+</html>
