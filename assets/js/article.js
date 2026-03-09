@@ -1,4 +1,26 @@
 (async function () {
+  function applyArticleBylineStyle(container) {
+    if (!container) {
+      return;
+    }
+
+    var paragraphs = container.querySelectorAll("p");
+    paragraphs.forEach(function (paragraph) {
+      var text = (paragraph.textContent || "").replace(/\s+/g, " ").trim();
+      var isByline = /^dengan hormat,\s*Bergas Bimo Br(?:an|n)arto\s*-\s*.+/i.test(text);
+
+      if (!isByline) {
+        return;
+      }
+
+      if (!/<br\s*\/?\s*>/i.test(paragraph.innerHTML)) {
+        paragraph.innerHTML = paragraph.innerHTML.replace(/dengan hormat,\s*/i, "dengan hormat,<br>");
+      }
+
+      paragraph.classList.add("article-byline");
+    });
+  }
+
   var manifestPosts = await BlogUtils.loadPostsManifest();
   var allPosts = BlogUtils.sortPostsLatest(manifestPosts);
   var navContainer = document.getElementById("archive-nav");
@@ -41,6 +63,7 @@
     document.title = (heading || fallbackTitle) + " - " + siteMeta.title;
     var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, postPath);
     bodyEl.innerHTML = BlogUtils.removeFirstHeadingFromHtml(parsedHtml);
+    applyArticleBylineStyle(bodyEl);
   } catch (err) {
     titleEl.textContent = fallbackTitle;
     document.title = fallbackTitle + " - " + siteMeta.title;
