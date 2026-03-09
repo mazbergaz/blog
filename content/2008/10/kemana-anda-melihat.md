@@ -2,7 +2,7 @@
 dengan hormat,  
 Bergas Bimo Branarto - 6:39 PM Selasa, 14 Oktober 2008
 
-![RUU Pornografi](../../img/ruup.jpg)
+![RUU Pornografi](../../img/RUUP.jpg)
 photo editting by: bergas bimo branarto
 
 apa yang anda lihat dari gambar ini?  
