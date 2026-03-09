@@ -49,7 +49,7 @@
           if (heading) {
             title = heading;
           }
-          var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, path);
+          var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown, path, { breaks: true });
           var parsedBodyHtml = BlogUtils.removeFirstHeadingFromHtml(parsedHtml);
           var parsedContainer = document.createElement("div");
           parsedContainer.innerHTML = parsedBodyHtml;

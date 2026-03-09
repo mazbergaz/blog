@@ -80,10 +80,10 @@
     return container.innerHTML;
   }
 
-  function parseMarkdownToHtml(markdown, logicalPostPath) {
+  function parseMarkdownToHtml(markdown, logicalPostPath, options) {
     var html;
     if (window.marked && typeof window.marked.parse === "function") {
-      html = window.marked.parse(markdown || "");
+      html = window.marked.parse(markdown || "", options || {});
     } else {
       html = markdownToHtml(markdown || "");
     }
@@ -199,6 +199,7 @@
 
     return output;
   }
+
 
   function escapeHtml(input) {
     return input
