@@ -94,5 +94,8 @@ window.BLOG_POSTS = [
   "2008/11/mengembalikan-ritual.md",
   "2008/12/budaya-diskusi-baca-tulis.md",
   "2008/12/pengesahan-dan-kejanggalan-bhp.md",
-  "2008/12/sederhana-sekali.md"
+  "2008/12/sederhana-sekali.md",
+  "2009/01/penangkaran-penyu-pantai-pangumbahan-jawa-barat.md",
+  "2009/01/trip-ujung-genteng-jawa-barat.md",
+  "2009/01/lanjutan-perjalanan.md"
 ];
