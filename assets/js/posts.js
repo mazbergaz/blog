@@ -107,5 +107,11 @@ window.BLOG_POSTS = [
   "2009/05/garing.md",
   "2009/05/sintesa-integralistik.md",
   "2009/05/antara-berbagai-karakter-dan-sebuah-mimpi.md",
-  "2009/06/belajar-berenang.md"
+  "2009/06/belajar-berenang.md",
+  "2009/07/changeling-opini-cita2-harapan-perjuangan.md",
+  "2009/07/simetris-reflektif.md",
+  "2009/07/sensi.md",
+  "2009/07/sekilas-tentang-kreativitas.md",
+  "2009/07/gonta-ganti-tampilan.md",
+  "2009/08/berkelana-bersama-udara.md"
 ];
