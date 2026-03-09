@@ -387,7 +387,7 @@
 
       for (var m = 0; m < months.length; m += 1) {
         var month = months[m];
-        var monthOpen = year === latestYear && m < 2 ? " open" : "";
+        var monthOpen = year === latestYear && m === 0 ? " open" : "";
         html.push("<details class=\"archive-month-toggle\"" + monthOpen + ">");
         html.push("<summary><h4>" + month + "</h4></summary>");
         html.push("<ul>");

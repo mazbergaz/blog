@@ -42,6 +42,8 @@ a:hover {
   position: sticky;
   top: 50vh;
   transform: translateY(-50%);
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .main-header-sticky {
