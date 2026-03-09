@@ -60,7 +60,9 @@ a:hover {
 
 .site-description {
   margin: -12px 0 20px;
-  color: #374151;
+  color: #4b5563;
+  font-style: italic;
+  font-size: 10pt;
 }
 
 .site-description p {
