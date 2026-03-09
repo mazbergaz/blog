@@ -35,7 +35,22 @@ a:hover {
 .right-column {
   border-left: 1px solid #e5e7eb;
   padding: 16px;
-  overflow-y: auto;
+  overflow: visible;
+}
+
+.archive-sticky {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+}
+
+.main-header-sticky {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 5;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .site-title {
@@ -209,6 +224,17 @@ a:hover {
   .right-column {
     border-left: 0;
     border-top: 1px solid #e5e7eb;
+  }
+
+  .archive-sticky {
+    position: static;
+    top: auto;
+    transform: none;
+  }
+
+  .main-header-sticky {
+    position: static;
+    top: auto;
   }
 
   .content-grid {
