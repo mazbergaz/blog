@@ -9,6 +9,8 @@
   }
 
   var perPage = 14;
+  var excerptWordLimitWithImage = 50;
+  var excerptWordLimitWithoutImage = 100;
   var manifestPosts = await BlogUtils.loadPostsManifest();
   var allPosts = BlogUtils.sortPostsLatest(manifestPosts);
   var totalPages = Math.max(1, Math.ceil(allPosts.length / perPage));
@@ -60,7 +62,10 @@
             cardImageHtml = '<img class="card-image" src="' + escapeHtml(firstImage.getAttribute("src") || "") + '" alt="' + escapeHtml(firstImage.getAttribute("alt") || "") + '">';
           }
 
-          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedBodyHtml, hasImage ? 50 : 100);
+          excerptHtml = BlogUtils.getExcerptHtmlByWords(
+            parsedBodyHtml,
+            hasImage ? excerptWordLimitWithImage : excerptWordLimitWithoutImage
+          );
         }
       } catch (err) {
         excerptHtml = "";

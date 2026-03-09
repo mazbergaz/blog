@@ -181,6 +181,12 @@ a:hover {
 
 .archive-year {
   margin-bottom: 18px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.archive-year:first-child {
+  margin-top: 0;
 }
 
 .archive-year-toggle,
