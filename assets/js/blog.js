@@ -407,7 +407,7 @@
     container.innerHTML = html.join("\n");
 
     var archiveRoot = container.closest(".archive-sticky") || container;
-    var targetHeight = Math.floor(window.innerHeight * 0.8);
+    var targetHeight = Math.floor(window.innerHeight * 0.9);
     var yearDetails = Array.prototype.slice.call(
       container.querySelectorAll(".archive-year-toggle")
     );
