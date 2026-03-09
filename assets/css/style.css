@@ -64,19 +64,47 @@ a:hover {
   padding: 14px;
 }
 
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:focus-visible {
+  outline: 2px solid #1e3a8a;
+  outline-offset: 2px;
+}
+
 .card h2 {
   margin: 0 0 8px;
   font-size: 18px;
 }
 
-.card p {
+.card-excerpt {
+  font-size: 12pt;
+}
+
+.card-excerpt p {
   margin: 0;
   line-height: 1.45;
+}
+
+.card-excerpt ul,
+.card-excerpt ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.card-excerpt > *:first-child {
+  margin-top: 0;
+}
+
+.card-excerpt > *:last-child {
+  margin-bottom: 0;
 }
 
 .read-more {
   display: inline-block;
   margin-top: 8px;
+  font-size: 10pt;
 }
 
 .pagination {

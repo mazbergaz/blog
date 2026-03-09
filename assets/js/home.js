@@ -1,4 +1,13 @@
 (async function () {
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   var perPage = 14;
   var allPosts = BlogUtils.sortPostsLatest(window.BLOG_POSTS || []);
   var totalPages = Math.max(1, Math.ceil(allPosts.length / perPage));
@@ -27,7 +36,8 @@
     pagePosts.map(async function (path) {
       var info = BlogUtils.parsePostPath(path);
       var title = BlogUtils.slugToTitle(info.slug);
-      var excerpt = "";
+      var excerptHtml = "";
+      var articleHref = "article.html?post=" + encodeURIComponent(path);
 
       try {
         var response = await fetch(BlogUtils.resolvePostPath(path));
@@ -38,24 +48,52 @@
             title = heading;
           }
           var parsedHtml = BlogUtils.parseMarkdownToHtml(markdown);
-          excerpt = BlogUtils.getExcerptFromHtml(parsedHtml, 150);
+          excerptHtml = BlogUtils.getExcerptHtmlByWords(parsedHtml, 100);
         }
       } catch (err) {
-        excerpt = "";
+        excerptHtml = "";
       }
 
-      var preview = excerpt || "No preview available.";
+      var preview = excerptHtml || "<p>No preview available.</p>";
       return (
-        '<article class="card">' +
-          "<h2>" + title + "</h2>" +
-          "<p>" + preview + "</p>" +
-          '<a class="read-more" href="article.html?post=' + encodeURIComponent(path) + '">...continue reading</a>' +
+        '<article class="card card-clickable" data-href="' + articleHref + '" role="link" tabindex="0" aria-label="Read article: ' + escapeHtml(title) + '">' +
+          "<h2>" + escapeHtml(title) + "</h2>" +
+          '<div class="card-excerpt">' + preview + "</div>" +
+          '<a class="read-more" href="' + articleHref + '">...continue reading</a>' +
         "</article>"
       );
     })
   );
 
   listContainer.innerHTML = cards.join("\n");
+
+  var cardElements = listContainer.querySelectorAll(".card-clickable");
+  cardElements.forEach(function (card) {
+    function navigateToCardHref() {
+      var href = card.getAttribute("data-href");
+      if (href) {
+        window.location.href = href;
+      }
+    }
+
+    card.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        return;
+      }
+      navigateToCardHref();
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (event.target.closest("a")) {
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        navigateToCardHref();
+      }
+    });
+  });
 
   pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
   prevButton.disabled = currentPage <= 1;

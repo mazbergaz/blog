@@ -63,6 +63,91 @@
     return words.slice(0, wordLimit).join(" ");
   }
 
+  function getExcerptHtmlByWords(html, wordLimit) {
+    var source = document.createElement("div");
+    source.innerHTML = String(html || "");
+
+    var result = document.createElement("div");
+    var wordsLeft = Number(wordLimit) || 0;
+    var truncated = false;
+
+    function truncateNode(node) {
+      if (wordsLeft <= 0) {
+        truncated = true;
+        return null;
+      }
+
+      if (node.nodeType === Node.TEXT_NODE) {
+        var rawText = node.nodeValue || "";
+        var normalized = rawText.replace(/\s+/g, " ").trim();
+        if (!normalized) {
+          return null;
+        }
+
+        var words = normalized.split(" ");
+        if (words.length <= wordsLeft) {
+          wordsLeft -= words.length;
+          return document.createTextNode(words.join(" "));
+        }
+
+        var kept = words.slice(0, wordsLeft).join(" ");
+        wordsLeft = 0;
+        truncated = true;
+        return document.createTextNode(kept + "...");
+      }
+
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        return null;
+      }
+
+      var tagName = node.tagName.toLowerCase();
+      if (tagName === "img") {
+        return null;
+      }
+
+      var clone = node.cloneNode(false);
+      var childNodes = Array.prototype.slice.call(node.childNodes);
+
+      for (var i = 0; i < childNodes.length; i += 1) {
+        var childClone = truncateNode(childNodes[i]);
+        if (childClone) {
+          clone.appendChild(childClone);
+        }
+        if (wordsLeft <= 0) {
+          break;
+        }
+      }
+
+      if (!clone.childNodes.length) {
+        return null;
+      }
+
+      return clone;
+    }
+
+    var topNodes = Array.prototype.slice.call(source.childNodes);
+    for (var i = 0; i < topNodes.length; i += 1) {
+      var topClone = truncateNode(topNodes[i]);
+      if (topClone) {
+        result.appendChild(topClone);
+      }
+      if (wordsLeft <= 0) {
+        break;
+      }
+    }
+
+    var output = result.innerHTML.trim();
+    if (!output) {
+      return "";
+    }
+
+    if (!truncated) {
+      return output;
+    }
+
+    return output;
+  }
+
   function escapeHtml(input) {
     return input
       .replace(/&/g, "&amp;")
@@ -248,6 +333,7 @@
     loadSiteMeta: loadSiteMeta,
     parseMarkdownToHtml: parseMarkdownToHtml,
     getExcerptFromHtml: getExcerptFromHtml,
+    getExcerptHtmlByWords: getExcerptHtmlByWords,
     normalizeLogicalPostPath: normalizeLogicalPostPath,
     resolvePostPath: resolvePostPath,
     parsePostPath: parsePostPath,
