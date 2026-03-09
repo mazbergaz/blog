@@ -10,7 +10,7 @@
 
   var perPage = 14;
   var excerptWordLimitWithImage = 50;
-  var excerptWordLimitWithoutImage = 100;
+  var excerptWordLimitWithoutImage = 75;
   var manifestPosts = await BlogUtils.loadPostsManifest();
   var allPosts = BlogUtils.sortPostsLatest(manifestPosts);
   var totalPages = Math.max(1, Math.ceil(allPosts.length / perPage));
