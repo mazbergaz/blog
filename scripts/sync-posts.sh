@@ -4,13 +4,41 @@ set -eu
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT_DIR"
 
-TMP_FILE="$(mktemp)"
+DISCOVERED="$(mktemp)"
+EXISTING="$(mktemp)"
+FINAL="$(mktemp)"
 
 find content -type f -name "*.md" \
   | sed 's#^\./##' \
   | grep -E '^content/[0-9]{4}/[0-9]{2}/[^/]+\.md$' \
   | sed 's#^content/##' \
-  | LC_ALL=C sort > "$TMP_FILE"
+  | LC_ALL=C sort > "$DISCOVERED"
+
+if [ -f assets/js/posts.json ]; then
+  grep -Eo '"[0-9]{4}/[0-9]{2}/[^"/]+\.md"' assets/js/posts.json \
+    | sed 's/^"//; s/"$//' \
+    | LC_ALL=C sed '/^$/d' > "$EXISTING"
+elif [ -f assets/js/posts.js ]; then
+  grep -Eo '"[0-9]{4}/[0-9]{2}/[^"/]+\.md"' assets/js/posts.js \
+    | sed 's/^"//; s/"$//' \
+    | LC_ALL=C sed '/^$/d' > "$EXISTING"
+else
+  : > "$EXISTING"
+fi
+
+# Keep current order for existing items that still exist.
+while IFS= read -r item; do
+  if grep -Fxq "$item" "$DISCOVERED"; then
+    printf '%s\n' "$item" >> "$FINAL"
+  fi
+done < "$EXISTING"
+
+# Append only new items at the bottom (deterministic by lexical order from DISCOVERED).
+while IFS= read -r item; do
+  if ! grep -Fxq "$item" "$FINAL"; then
+    printf '%s\n' "$item" >> "$FINAL"
+  fi
+done < "$DISCOVERED"
 
 mkdir -p assets/js
 
@@ -23,7 +51,7 @@ END {
     printf "\n"
   }
   print "]"
-}' "$TMP_FILE" > assets/js/posts.json
+}' "$FINAL" > assets/js/posts.json
 
 awk 'BEGIN { print "window.BLOG_POSTS = [" }
 {
@@ -34,8 +62,8 @@ END {
     printf "\n"
   }
   print "];"
-}' "$TMP_FILE" > assets/js/posts.js
+}' "$FINAL" > assets/js/posts.js
 
-rm -f "$TMP_FILE"
+rm -f "$DISCOVERED" "$EXISTING" "$FINAL"
 
 echo "Synced assets/js/posts.json and assets/js/posts.js"

@@ -68,5 +68,12 @@ window.BLOG_POSTS = [
   "2008/09/september-not-the-rite-time-to-die.md",
   "2008/09/seven.md",
   "2008/09/take-it-simple.md",
-  "2008/09/teka-teki-babakan-siliwangi.md"
+  "2008/09/teka-teki-babakan-siliwangi.md",
+  "2008/09/usil-banget-uu-pornografi.md",
+  "2008/09/teh-manis-panas.md",
+  "2008/09/tragedi-prasangka-19-sept-08.md",
+  "2008/09/salah-ngitung.md",
+  "2008/09/pemimpin-baru.md",
+  "2008/09/tanggapan-uu-pornografi.md",
+  "2008/09/beda-peraturan-dan-sastra.md"
 ];
