@@ -3,7 +3,7 @@
 dengan hormat,  
 Bergas Bimo Branarto - 2:25 AM Kamis, 03 September 2009
 
-![Gempa Tasikmalaya 2009](/../../img/imagestacker.inc.php.jpg)
+![Gempa Tasikmalaya 2009](../../img/imagestacker.inc.php.jpg)
 
 [Gempa tasikmalaya (2 september 2009)](http://earthquake.usgs.gov/eqcenter/pager/events/us/2009lbat/index.html) kejadian karena ketemunya lempeng sunda dengan lempeng india di 142 km dari tasik di kedalaman 30 km di bawah permukaan.
 
