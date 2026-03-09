@@ -123,5 +123,6 @@ window.BLOG_POSTS = [
   "2009/10/lattice-gas-cellular-automata.md",
   "2009/10/vitamin-c-dosis-tinggi.md",
   "2009/11/fenomena-awal-bulan.md",
-  "2009/12/jalan-raya-jakarta-raya.md"
+  "2009/12/jalan-raya-jakarta-raya.md",
+  "2010/01/sindrom-akhir-semester.md"
 ];
