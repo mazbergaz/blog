@@ -112,17 +112,38 @@ a:hover {
 
 .card-excerpt {
   font-size: 12pt;
+  line-height: 1.5;
 }
 
 .card-excerpt p {
-  margin: 0;
-  line-height: 1.45;
+  margin: 0 0 10px;
 }
 
 .card-excerpt ul,
 .card-excerpt ol {
-  margin: 0;
+  margin: 0 0 10px;
   padding-left: 18px;
+}
+
+.card-excerpt li {
+  margin-bottom: 4px;
+}
+
+.card-excerpt h1,
+.card-excerpt h2,
+.card-excerpt h3,
+.card-excerpt h4,
+.card-excerpt h5,
+.card-excerpt h6 {
+  margin: 0 0 10px;
+  font-size: 1em;
+  line-height: 1.35;
+}
+
+.card-excerpt blockquote {
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid #d1d5db;
 }
 
 .card-excerpt > *:first-child {
