@@ -54,4 +54,4 @@ Lucu juga ya. Sama-sama pengen cepat, tapi caranya justru bikin semuanya lebih l
 
 Mungkin memang sudah waktunya jalan di Bali ngga cuma dipahami sebagai ruang bergerak, tapi juga ruang belajar disiplin. Karena tanpa itu, seunik apa pun desain jalannya, dan sebanyak apa pun orang merasa jago nyari celah, ujung-ujungnya kita cuma sedang menyusun deadlock yang lebih besar.
 
-> Note: ini nyobain AI generated content dari _styleguide_ dan konteks yang gw kasih. Overall cukup sesuai, tapi di beberapa tempat masih ada yg rasanya _'ngga kaya gw'_, masih nyari persisnya yang mana dan kenapa.
+> Note: ini nyobain AI generated content (Codex GPT-5.4)  dari _styleguide_ dan konteks yang gw kasih. Overall cukup sesuai, tapi di beberapa tempat masih ada yg rasanya _'ngga kaya gw'_, masih nyari persisnya yang mana dan kenapa.
