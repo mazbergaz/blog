@@ -55,12 +55,10 @@ Lucu juga ya. Sama-sama pengen cepat, tapi caranya justru bikin semuanya lebih l
 Kayanya memang jalan di Bali ngga bisa cuma diperlakukan sebagai ruang lewat doang. Ada unsur disiplin yang ngga bisa terus ditawar. Karena tanpa itu, seunik apa pun desain jalannya, dan sebanyak apa pun orang merasa jago nyari celah, ujung-ujungnya yang disusun ya deadlock yang lebih gede lagi.
 
 
-> ## Notes
-> 
-> Ini nyobain AI generated content (Codex GPT-5.4)  dari _styleguide_ dan konteks yang gw kasih. Overall cukup sesuai, tapi di beberapa tempat masih ada yg rasanya _'ngga kaya gw'_, masih nyari persisnya yang mana dan kenapa.
-> 
-> ### Evaluations
-> 1. ```Kalau demikian, berarti ada dua lapis masalah yang saling nguatin:``` (line 32)  
-> it will be 'more me' to say something like this
-```So far yang gw tangkep ada 2 problemnya:```  
-> --> see the changes [here](https://github.com/mazbergaz/blog/pull/1/changes).
+## Notes
+ 
+Ini nyobain AI generated content (Codex GPT-5.4)  dari _styleguide_ dan konteks yang gw kasih. Overall cukup sesuai, tapi di beberapa tempat masih ada yg rasanya _'ngga kaya gw'_, masih nyari persisnya yang mana dan kenapa.
+ 
+### Evaluations
+1.  ```Kalau demikian, berarti ada dua lapis masalah yang saling nguatin:``` (line 32) it will be 'more me' to say something like this ```So far yang gw tangkep ada 2 problemnya:```  
+--> see the changes [here](https://github.com/mazbergaz/blog/pull/1/changes).
