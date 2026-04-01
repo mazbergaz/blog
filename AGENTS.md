@@ -29,6 +29,9 @@ Path convention:
 - If link/path changes are unavoidable, update all internal references.
 - Every new post/content file must also be synced into `assets/js/posts.json` so it appears in homepage/archive/article navigation.
 - Blog title and description must be maintained in `content/blog.md` (single source used by homepage and article page).
+- For content-writing or content-editing requests, do not change files before explicit user confirmation.
+- For content-writing or content-editing requests, first present the planned changes in detail and wait for confirmation before acting.
+- The plan for content-writing or content-editing requests must use a PR-like format: for each proposed change, show what will change, which line/section is affected, and the justification.
 
 ## GitHub Pages Delivery Strategy (Minimal)
 Default approach: **static-only, no build pipeline**.
@@ -79,6 +82,10 @@ Only introduce tooling when necessary, and keep it small:
 - Do not introduce new libraries without clear need.
 - Keep commits/changes reversible and low-risk.
 - Update this file when structural conventions change.
+- Use a `Think`, `Plan`, `Act` workflow for content work.
+- `Think`: inspect the relevant content, voice, and repository constraints before proposing edits.
+- `Plan`: describe the intended changes in sufficient detail for review, including which files/sections will be touched, a PR-like compare of what will change for each relevant line/section, and the justification for each proposed change.
+- `Act`: only make the changes after the user confirms the plan.
 
 ## Definition of Done (for site changes)
 A change is done when:

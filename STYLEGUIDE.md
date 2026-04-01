@@ -5,6 +5,13 @@ Agent instruction for writing new blog content or editing draft content in this 
 
 This guide is distilled from the articles under `content/` across 2006-2026. The archive shows several phases, but the voice has stable recurring traits that should be preserved.
 
+## Workflow
+Use a `Think`, `Plan`, `Act` workflow for writing and editing blog content.
+
+- `Think`: read the relevant draft or reference posts first, identify voice/tone constraints, and understand what feels off before proposing a rewrite.
+- `Plan`: explain the intended changes in detail using a PR-like format. For each proposed change, show the affected line or section, compare the current wording with the intended change when possible, and give the justification for why that change improves voice, tone, or structure.
+- `Act`: wait for user confirmation before editing files.
+
 ## Core Voice
 - Write in first person.
 - The dominant persona is intimate, reflective, and self-observing.
@@ -23,6 +30,8 @@ This guide is distilled from the articles under `content/` across 2006-2026. The
 - Casual Indonesian is the base register.
 - Mildly informal slang is natural: `gw`, `ga`, `gitu`, `ngeliat`, `trus`, `udah`, `sebenernya`, `kaya`.
 - The archive often blends that with formal words, technical language, academic phrasing, English fragments, and quoted terminology.
+- When transitioning into a conclusion, summary, or breakdown, prefer spoken phrasing that shows the writer's active point of view: `So far yang gw tangkep...`, `Kalau gw sederhanain...`, `Menurut gw problemnya...`.
+- Be careful with connectors that sound too essay-like or detached such as `Kalau demikian`, `oleh karena itu`, `dengan demikian`, unless the post is intentionally adopting a more formal register.
 - Humor is dry, offhand, and sometimes self-mocking.
 - Skepticism and doubt are common, but usually in a searching way rather than a cynical one.
 - Strong opinions are allowed, but they should still sound reasoned, observed, or questioned.
@@ -100,6 +109,7 @@ When writing new posts, prefer the more mature clarity of later years without lo
 - Keep the voice personal and close.
 - Use `gw` by default unless there is a clear reason to switch.
 - In new prose writing, start sentences with capital letters unless the piece is intentionally poetic.
+- When summarizing or pivoting to a list, let the sentence sound like spoken thinking, not academic exposition.
 - Let questions appear naturally.
 - If discussing technical or social topics, anchor them in an observation or scenario first.
 - If a post becomes abstract, bring in at least one concrete image, example, or mini-scene.
